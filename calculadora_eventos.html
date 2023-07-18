@@ -7,14 +7,13 @@
 <style>
   
 .numero{
-	width:60px;
+	width:65px;
 	height:60px;
-	
 	
 }
 
 .igual{
-	width:120px;
+	width:135px;
 	height:60px;
 	
 }
@@ -78,6 +77,13 @@ table{
     }
   }
 
+  function borrar(){
+    document.getElementById("display").value=0;
+    cifra="";
+    sumar=false;
+    restar=true;
+  }
+
 
 </script>
 
@@ -85,23 +91,22 @@ table{
 </head>
 
 <body>
-<table width="15%" border="1">
+<table width="20%" border="1">
   <tr>
     <td colspan="4" align="center">
     <input name="display" type="text" class="color_display" id="display" size="25"></td>
   </tr>
   <tr>
-    <td width="26%"><input name="button" type="button" class="numero" id="button" value="+" onclick="suma()"></td>
-    <td width="21%"><input name="button2" type="button" class="numero" id="button2" value="-" onclick="resta()"></td>
-    <td width="21%"><input name="button3" type="button" class="numero" id="button3" value="*" ></td>
-    <td width="32%"><input name="button4" type="button" class="numero" id="button4" value="/" ></td>
+    <td width="19%"><input name="button" type="button" class="numero" id="button" value="+" onclick="suma()"></td>
+    <td width="19%"><input name="button2" type="button" class="numero" id="button2" value="-" onclick="resta()"></td>
+    <td width="19%"><input name="button3" type="button" class="numero" id="button3" value="*" ></td>
+    <td width="19%"><input name="button4" type="button" class="numero" id="button4" value="/" ></td>
   </tr>
   <tr>
     <td><input name="num7" type="button" class="numero" id="num7" value="7" onClick="display_numeros(7)"></td>
     <td><input name="num8" type="button" class="numero" id="num8" value="8" onClick="display_numeros(8)"></td>
     <td><input name="num9" type="button" class="numero" id="num9" value="9" onClick="display_numeros(9)"></td>
-    <td width="32%"><input name="buttonC" type="button" class="numero" id="button4" value="C" ></td>
-    <td>&nbsp;</td>
+    <td width="19%"><input name="button18" type="button" class="numero" id="buttonC" value="C" onclick="borrar()"></td>
   </tr>
   <tr>
     <td><input name="num4" type="button" class="numero" id="num4" value="4" onClick="display_numeros(4)"></td>
