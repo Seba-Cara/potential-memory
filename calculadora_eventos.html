@@ -41,6 +41,7 @@ table{
   var acumulado=0;
   var sumar=false;
   var restar=false;
+  var p_operacion=true;
 
   function display_numeros(numero){
     document.getElementById("display").value=cifra+numero;
@@ -48,40 +49,55 @@ table{
   }
 
   function suma(){
-
-    acumulado=acumulado+parseInt(cifra);
-
-    document.getElementById("display").value=acumulado;
+    if(restar){
+      acumulado=acumulado-parseInt(cifra);
+      document.getElementById("display").value=acumulado;
+    }else{
+      acumulado=acumulado+parseInt(cifra);
+      document.getElementById("display").value=acumulado;
+    }
     cifra="";
     sumar=true;
+    restar=false;
+    p_operacion=false;
   }
 
   function resta (){
-    if(sumar){
-      acumulado=acumulado+parseInt(cifra);
-      document.getElementById("display").value=acumulado;
+    if(p_operacion==false){
+      if(sumar){
+        acumulado=acumulado+parseInt(cifra);
+        document.getElementById("display").value=acumulado;
+      }else{
+        acumulado=acumulado-parseInt(cifra);
+        document.getElementById("display").value=acumulado;
+      }
     }else{
-      acumulado=acumulado-parseInt(cifra);
-      document.getElementById("display").value=acumulado;
+      acumulado=parseInt(cifra);
+      p_operacion=false;
     }
+    p_operacion=false;
     cifra="";
     sumar=false;
     restar=true;
   }
-
+  
   function resultado(){
     if(sumar){
       document.getElementById("display").value=acumulado+parseInt(cifra);
     }else if(restar){
       document.getElementById("display").value=acumulado-parseInt(cifra);
     }
+    acumulado=parseInt(document.getElementById("display").value);
+    cifra=0;
   }
 
   function borrar(){
     document.getElementById("display").value=0;
     cifra="";
     sumar=false;
-    restar=true;
+    restar=false;
+    acumulado=0;
+    p_operacion=true;
   }
 
 
@@ -97,10 +113,10 @@ table{
     <input name="display" type="text" class="color_display" id="display" size="25"></td>
   </tr>
   <tr>
-    <td width="19%"><input name="button" type="button" class="numero" id="button" value="+" onclick="suma()"></td>
-    <td width="19%"><input name="button2" type="button" class="numero" id="button2" value="-" onclick="resta()"></td>
-    <td width="19%"><input name="button3" type="button" class="numero" id="button3" value="*" ></td>
-    <td width="19%"><input name="button4" type="button" class="numero" id="button4" value="/" ></td>
+    <td width="21%"><input name="button" type="button" class="numero" id="button" value="+" onclick="suma()"></td>
+    <td width="21%"><input name="button2" type="button" class="numero" id="button2" value="-" onclick="resta()"></td>
+    <td width="21%"><input name="button3" type="button" class="numero" id="button3" value="*" ></td>
+    <td width="21%"><input name="button4" type="button" class="numero" id="button4" value="/" ></td>
   </tr>
   <tr>
     <td><input name="num7" type="button" class="numero" id="num7" value="7" onClick="display_numeros(7)"></td>
